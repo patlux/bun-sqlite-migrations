@@ -1,6 +1,7 @@
 {
   "name": "bun-sqlite-migrations",
   "version": "1.0.1",
+  "main": "src/index.ts",
   "module": "src/index.ts",
   "type": "module",
   "scripts": {
