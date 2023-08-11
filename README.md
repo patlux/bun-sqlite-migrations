@@ -1,15 +1,34 @@
 # bun-sqlite-migrations
 
-To install dependencies:
+Simple function for migration management for [bun:sqlite](https://bun.sh/docs/api/sqlite)
 
-```bash
-bun install
+## Getting started
+
+```sh
+bun add bun-sqlite-migrations
 ```
 
-To run:
+### Example
 
-```bash
-bun run index.ts
+Add your `.sql` files into `./migrations`, e.g.:
+
+- `0001_init.sql`
+- `0002_add_users_table.sql`
+- `0003_add_column_gender_to_users_table.sql`
+
+> Only the sorting matters. The index of the last executed migration will be stored into the database.
+
+```ts
+import { migrate, getMigrations } from 'bun-sqlite-migrations'
+
+const db = new Database(`data.db`)
+migrate(db, getMigrations('./migrations'))
 ```
 
-This project was created using `bun init` in bun v0.6.3. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+**Verify**:
+
+```sh
+sqlite3 data.db "PRAGMA user_version;"
+# should return the number of migrations which were executed
+3
+```
