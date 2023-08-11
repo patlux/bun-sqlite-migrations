@@ -2,6 +2,10 @@
   "name": "bun-sqlite-migrations",
   "module": "src/index.ts",
   "type": "module",
+  "scripts": {
+    "check-format": "prettier --ignore-path .gitignore '**/*.ts' --check",
+    "check-types": "tsc --version && tsc --noEmit --skipLibCheck"
+  },
   "devDependencies": {
     "bun-types": "latest",
     "prettier": "^3.0.1"
@@ -12,5 +16,12 @@
   "prettier": {
     "semi": false,
     "singleQuote": true
+  },
+  "license": "MIT",
+  "author": "Patrick Wozniak <hi@patwoz.de>",
+  "homepage": "https://patwoz.dev",
+  "repository": {
+    "type": "git",
+    "url": "github:patwoz/bun-sqlite-migrations"
   }
 }
